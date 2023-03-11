@@ -25,4 +25,5 @@ Plasma is an online fish market which is made through Flutter. This project is m
 
 - for more testing info check [stripe documentation](https://stripe.com/docs/testing)
 
-
+## If you like this don't forget to star the repo ! 
+Thank you
