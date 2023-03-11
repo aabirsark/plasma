@@ -45,6 +45,6 @@ List<int> weightage = List.generate(10, (index) => (index + 1) * 250);
 
 // stripe keys
 const String stripeSecretKey =
-    "sk_test_51MbQ0lSE59RYsI4gpgFlEirxSJaqqXLxg7hwJLs7P6CAB3LPnzH5nEehXEu3KwnX3kBwszdaHtdGkWJfRyEICBpV008qQJ6QHy";
+    "Your Key";
 const String publishableKey =
-    "pk_test_51MbQ0lSE59RYsI4g2FaiNx1E3UK7TuDEkWyyl6kECKFZPCBurnECmZiLw4yZX5GAanewGNEjja0cGfiiZAGDVJTY00DS8vQ1Rn";
+    "Your Key";
