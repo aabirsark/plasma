@@ -78,7 +78,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   });
                 } catch (e) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("Couldn't process the payment"),
+                    content: Text("Couldn't process the payment reason = $e"),
                     behavior: SnackBarBehavior.floating,
                   ));
                   isPaymentProcessing.value = false;
