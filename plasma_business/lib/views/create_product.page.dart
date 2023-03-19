@@ -6,26 +6,29 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plasma_business/services/db/product_functions.db.dart';
+import 'package:plasma_business/services/models/product_model.dart';
 import 'package:plasma_business/views/widgets/primary_button.widget.dart';
 import 'package:plasma_business/views/widgets/primary_field.widget.dart';
 
 class CreateProduct extends HookWidget {
-  const CreateProduct({super.key});
+  const CreateProduct({super.key, this.model});
+
+  final ProductModel? model;
 
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier<List<XFile>> images = useState([]);
-    final name = useTextEditingController();
-    final description = useTextEditingController();
-    final price = useTextEditingController();
-    final message = useTextEditingController();
+    final ValueNotifier<List<String>> images = useState([]);
+
+    final name = useTextEditingController(text: model?.product);
+    final description = useTextEditingController(text: model?.about);
+    final price = useTextEditingController(text: model?.price.toString());
     final isloading = useState(false);
     final loadingMessage = useState("Processing...");
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Add products"),
+        title: Text(model != null ? "Update product" : "Add products"),
       ),
       body: Stack(
         children: [
@@ -39,50 +42,51 @@ class CreateProduct extends HookWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Text("Swipe to see more"),
                     ),
-                  GestureDetector(
-                    onTap: () async {
-                      final ImagePicker picker = ImagePicker();
-                      List<XFile> file =
-                          await picker.pickMultiImage(imageQuality: 60);
+                  if (model == null)
+                    GestureDetector(
+                      onTap: () async {
+                        final ImagePicker picker = ImagePicker();
+                        List<XFile> file =
+                            await picker.pickMultiImage(imageQuality: 60);
 
-                      images.value = file;
-                    },
-                    child: Container(
-                      height: 230,
-                      width: double.infinity,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.grey.shade200),
-                      child: images.value.isEmpty
-                          ? Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(
-                                    Iconsax.add,
-                                    size: 40,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Add Images",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                        images.value = file.map((e) => e.path).toList();
+                      },
+                      child: Container(
+                        height: 230,
+                        width: double.infinity,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.grey.shade200),
+                        child: images.value.isEmpty
+                            ? Center(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: const [
+                                    Icon(
+                                      Iconsax.add,
+                                      size: 40,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "Add Images",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : PageView.builder(
+                                itemCount: images.value.length,
+                                itemBuilder: (context, index) => Image.file(
+                                  File(images.value[index]),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            )
-                          : PageView.builder(
-                              itemCount: images.value.length,
-                              itemBuilder: (context, index) => Image.file(
-                                File(images.value[index].path),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                      ),
                     ),
-                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -150,10 +154,10 @@ class CreateProduct extends HookWidget {
                           description.text.isNotEmpty &&
                           price.text.isNotEmpty) {
                         isloading.value = true;
-                        List<String> files =
-                            images.value.map((e) => e.path).toList();
+
                         loadingMessage.value = "Uploading images...";
-                        ProductFuctions.uploadImages(files).then((value) {
+                        ProductFuctions.uploadImages(images.value)
+                            .then((value) {
                           print(value);
                           if (value.isNotEmpty) {
                             loadingMessage.value = "Setting up the product";

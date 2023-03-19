@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:plasma_business/services/db/product_functions.db.dart';
 import 'package:plasma_business/services/models/product_model.dart';
+import 'package:plasma_business/views/create_product.page.dart';
 import 'package:plasma_business/views/widgets/coming_soon.widget.dart';
 import 'package:plasma_business/views/widgets/custom_chip.widget.dart';
 import 'package:plasma_business/views/widgets/primary_button.widget.dart';
@@ -83,22 +84,6 @@ class ProductInfoPage extends HookWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    const Text(
-                      "Shop Address",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Text(
-                      "[Dummy] Pariatur pariatur ea sunt amet veniam esse culpa ipsum laborum eu deserunt aute.",
-                      style: TextStyle(
-                        fontSize: 13,
-                      ),
-                    ),
                     const SizedBox(
                       height: 30,
                     ),
@@ -110,7 +95,7 @@ class ProductInfoPage extends HookWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const ComingSoon(),
+                                    builder: (context) => CreateProduct(model: productModel),
                                   ));
                             },
                             customWidget: const Text(

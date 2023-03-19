@@ -30,11 +30,18 @@ class ProductCard extends StatelessWidget {
                 bottom: BorderSide(color: Colors.black.withOpacity(0.1)))),
         child: Row(
           children: [
-            SizedBox(
+            Container(
+                height: 120,
                 width: 120,
+                clipBehavior: Clip.antiAlias,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: Hero(
                     tag: model.images![0],
-                    child: Image.network(model.images![0]))),
+                    child: Image.network(
+                      model.images![0],
+                      fit: BoxFit.cover,
+                    ))),
             const SizedBox(
               width: 20,
             ),

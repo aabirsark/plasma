@@ -67,6 +67,20 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 16, fontFamily: primaryFont))
             ])),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CreateProduct(),
+              ));
+        },
+        backgroundColor: primaryColor,
+        child: const Icon(
+          CupertinoIcons.add,
+          color: Colors.black,
+        ),
+      ),
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Column(

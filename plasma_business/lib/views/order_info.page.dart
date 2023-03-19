@@ -79,8 +79,13 @@ class OrderInfoPage extends StatelessWidget {
                         ? ' ${order.quantity} gm'
                         : '${order.quantity! / 10000} Kg'),
                 const Divider(),
+                _orderDetail("Order Type", order.isChopped ?? ""),
+                const Divider(),
                 _orderDetail(
                     "Product Price", "Rs. ${order.model?.price?.ceil()}"),
+                const Divider(),
+                _orderDetail("Product Price",
+                    "Rs. ${(order.model!.price! * (order.quantity! / 250)).ceil()}"),
                 const Divider(),
                 _orderDetail("Delivery Charge", "Rs. 20"),
                 const Divider(),
@@ -101,7 +106,7 @@ class OrderInfoPage extends StatelessWidget {
 
   Widget _orderDetail(String label, String detail) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
           Text(

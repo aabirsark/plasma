@@ -32,6 +32,7 @@ class _OrdersPageState extends State<OrdersPage> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 80,
+          scrolledUnderElevation: 0.0,
           automaticallyImplyLeading: false,
           title: const Text("Orders")),
       body: isLoading

@@ -56,16 +56,22 @@ class ProductsAndStoreFunctions {
   }
 
   // add to cart
-  static Future addToCart(ProductModel model) async {
+  static Future addToCart(
+      ProductModel model, int weight, double orderAmount) async {
     try {
       final db = FirebaseFirestore.instance;
       final auth = FirebaseAuth.instance;
+
+      final cartItem = model.toMap();
+
+      cartItem['weightage'] = weight;
+      cartItem['orderAmount'] = orderAmount;
 
       await db
           .collection("users")
           .doc(auth.currentUser!.uid)
           .collection("cart")
-          .add(model.toMap());
+          .add(cartItem);
 
       return true;
     } catch (e) {

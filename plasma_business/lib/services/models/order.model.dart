@@ -12,8 +12,12 @@ class OrderModel {
   final ProductModel? model;
   final String? status;
   String? id;
+  final String? payment;
+  final String? isChopped;
 
   OrderModel({
+    this.payment,
+    this.isChopped,
     this.customer,
     this.seller,
     this.status,
@@ -45,6 +49,8 @@ class OrderModel {
       code: map['code'],
       status: map['status'] ?? "Ordered",
       quantity: map['quantity'],
+      payment: map['payment'],
+      isChopped: map['type'],
       price: map['price'],
       model:
           map['product'] != null ? ProductModel.fromMap(map['product']) : null,

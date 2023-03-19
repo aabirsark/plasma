@@ -29,7 +29,7 @@ class Plasma extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           fontFamily: primaryFont,
           useMaterial3: true,
-          primarySwatch: Colors.amber,
+          primarySwatch: Colors.amber,                    
           appBarTheme: AppBarTheme(
               elevation: 0.0,
               backgroundColor: Colors.white,

@@ -42,7 +42,7 @@ class ProductCard extends StatelessWidget {
                       tag: product.images![0],
                       child: Image.network(
                         product.images![0],
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.cover,
                       ),
                     ))),
             const SizedBox(
@@ -95,3 +95,14 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+
+//TODO:
+/// => checkout
+/// => opt. b/w chopped and whole
+/// => Wishlist
+/// => Orders page
+/// => 3 apps main app, delivery app, store app
+/// => progress
+/// => Map
+/// => Search

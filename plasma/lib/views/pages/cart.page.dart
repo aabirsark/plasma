@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:plasma/app/constants.dart';
 import 'package:plasma/services/db/products.service.db.dart';
 import 'package:plasma/services/models/product_model.dart';
+import 'package:plasma/views/check_out_cart.page.dart';
+import 'package:plasma/views/widgets/primary_button.widget.dart';
 import 'package:plasma/views/widgets/product_card_horz.widget.dart';
 
 class WishPage extends StatelessWidget {
@@ -32,6 +35,24 @@ class WishPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
                 children: [
+                  if (snapshot.data!.isNotEmpty)
+                    PrimaryButton(
+                      callback: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  CheckOutCart(products: snapshot.data!),
+                            ));
+                      },
+                      customWidget: const Text(
+                        "CHECKOUT",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Expanded(
                     child: ListView.builder(
                       itemBuilder: (context, index) {

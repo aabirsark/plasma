@@ -1,9 +1,12 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:plasma/views/pages/cart.page.dart';
 import 'package:plasma/views/pages/home_tab.page.dart';
-import 'package:plasma/views/pages/order.page.dart';
+import 'package:plasma/views/pages/map.page.dart';
+import 'package:plasma/views/pages/order.tab.dart';
 import 'package:plasma/views/widgets/coming_soon.widget.dart';
 
 const String appname = "PLASMA";
@@ -30,14 +33,15 @@ class Tabs {
 
 List<Tabs> tabs = [
   Tabs(const HomeTab(), "Home", 0, Iconsax.home),
-  Tabs(const WishPage(), "Wishlist", 1, Iconsax.heart),
-  Tabs(const OrdersTab(), "Orders", 2, Iconsax.box),
+  Tabs(const MapPage(), "Map view", 1, Iconsax.map),
+  Tabs(const WishPage(), "Wishlist", 2, Iconsax.heart),
+  Tabs(const OrdersTab(), "Orders", 3, Iconsax.box),
   Tabs(
       const ComingSoon(
         showLogOut: true,
       ),
       "Profile",
-      3,
+      4,
       Iconsax.personalcard),
 ];
 
@@ -45,6 +49,6 @@ List<int> weightage = List.generate(10, (index) => (index + 1) * 250);
 
 // stripe keys
 const String stripeSecretKey =
-    "Your Key";
+    "sk_test_51MbQ0lSE59RYsI4gpgFlEirxSJaqqXLxg7hwJLs7P6CAB3LPnzH5nEehXEu3KwnX3kBwszdaHtdGkWJfRyEICBpV008qQJ6QHy";
 const String publishableKey =
-    "Your Key";
+    "pk_test_51MbQ0lSE59RYsI4g2FaiNx1E3UK7TuDEkWyyl6kECKFZPCBurnECmZiLw4yZX5GAanewGNEjja0cGfiiZAGDVJTY00DS8vQ1Rn";

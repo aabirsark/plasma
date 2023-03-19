@@ -9,11 +9,16 @@ class ProductModel {
   final String? about;
   final double? price;
   final String? uid;
+  final int? weightage;
+  final double? orderAmount;
+
   String? id;
 
   ProductModel({
     this.id,
     this.uid,
+    this.orderAmount,
+    this.weightage,
     required this.images,
     required this.product,
     required this.author,
@@ -33,14 +38,15 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      images: map['image'],
-      product: map['product'],
-      author: map['author'],
-      about: map['about'],
-      uid: map['uid'],
-      price: map['price'],
-      id: map['id'],
-    );
+        images: map['image'],
+        product: map['product'],
+        author: map['author'],
+        about: map['about'],
+        uid: map['uid'],
+        price: map['price'],
+        id: map['id'],
+        weightage: map['weightage'],
+        orderAmount: map['orderAmount']);
   }
 
   String toJson() => json.encode(toMap());

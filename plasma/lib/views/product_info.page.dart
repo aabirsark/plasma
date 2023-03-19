@@ -85,25 +85,6 @@ class ProductInfoPage extends HookWidget {
                       height: 30,
                     ),
                     const Text(
-                      "Shop Address",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Text(
-                      "Pariatur pariatur ea sunt amet veniam esse culpa ipsum laborum eu deserunt aute.",
-                      style: TextStyle(
-                        fontSize: 13,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Text(
                       "Select quantity",
                       style: TextStyle(
                         fontSize: 15,
@@ -135,16 +116,7 @@ class ProductInfoPage extends HookWidget {
                       children: [
                         Expanded(
                           child: PrimaryButton(
-                            callback: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CheckoutPage(
-                                      quantity: selectedQantity.value,
-                                      model: productModel,
-                                    ),
-                                  ));
-                            },
+                            callback: () {},
                             customWidget: const Text(
                               "Order Now",
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -161,7 +133,9 @@ class ProductInfoPage extends HookWidget {
                               if (!isloading.value) {
                                 isloading.value = true;
                                 ProductsAndStoreFunctions.addToCart(
-                                        productModel)
+                                        productModel,
+                                        selectedQantity.value,
+                                        price.value.toDouble())
                                     .then((value) {
                                   isloading.value = false;
                                   ScaffoldMessenger.of(context)

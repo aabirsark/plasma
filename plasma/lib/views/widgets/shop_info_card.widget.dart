@@ -21,57 +21,50 @@ class ShopInfoCard extends StatelessWidget {
             ));
       },
       child: Container(
-        color: Colors.grey.shade50,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+                image: NetworkImage(
+                  shop.banner!,
+                ),
+                fit: BoxFit.cover)),
         height: 200,
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 120,
-              child:
-                  Hero(tag: shop.banner!, child: Image.network(shop.banner!)),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    (shop.shop ?? "").toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    shop.about ?? "",
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text(
-                    "Address",
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                  Text(
-                    shop.address ?? "",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
-                  ),
-                ],
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          color: Colors.black26,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                (shop.shop ?? "").toUpperCase(),
+                style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                shop.about ?? "",
+                maxLines: 3,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 12, color: Colors.grey.shade200),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                shop.address ?? "",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 9, color: Colors.grey.shade100),
+              ),
+            ],
+          ),
         ),
       ),
     );
