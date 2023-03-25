@@ -32,7 +32,8 @@ class ShopInfoCard extends StatelessWidget {
         height: 200,
         alignment: Alignment.bottomCenter,
         child: Container(
-          color: Colors.black26,
+          color: Colors.black45,
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -52,7 +53,7 @@ class ShopInfoCard extends StatelessWidget {
                 maxLines: 3,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 12, color: Colors.grey.shade200),
+                style: const TextStyle(fontSize: 12, color: Colors.white),
               ),
               const SizedBox(
                 height: 5,

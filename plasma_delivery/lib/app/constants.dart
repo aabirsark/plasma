@@ -13,23 +13,6 @@ final String? headerFont = GoogleFonts.orbitron().fontFamily;
 // colors
 const Color primaryColor = Colors.amber;
 
-// tabs
-// class Tabs {
-//   final Widget page;
-//   final String label;
-//   final int id;
-//   final IconData icon;
-
-//   Tabs(this.page, this.label, this.id, this.icon);
-// }
-
-// List<Tabs> tabs = [
-//   Tabs(const HomePage(), "Product", 0, Iconsax.box),
-//   Tabs(const OrdersPage(), "Orders", 1, Iconsax.activity),
-//   Tabs(const ComingSoon(), "Earnings", 2, Iconsax.money),
-//   Tabs(const ShopInfoPage(), "Shop info", 3, Iconsax.shop),
-// ];
-
 // stripe keys
 const String stripeSecretKey =
     "sk_test_51MbQ0lSE59RYsI4gpgFlEirxSJaqqXLxg7hwJLs7P6CAB3LPnzH5nEehXEu3KwnX3kBwszdaHtdGkWJfRyEICBpV008qQJ6QHy";

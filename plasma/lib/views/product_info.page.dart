@@ -112,84 +112,55 @@ class ProductInfoPage extends HookWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: PrimaryButton(
-                            callback: () {},
-                            customWidget: const Text(
-                              "Order Now",
+                    PrimaryButton(
+                      callback: () {
+                        if (!isloading.value) {
+                          isloading.value = true;
+                          ProductsAndStoreFunctions.addToCart(productModel,
+                                  selectedQantity.value, price.value.toDouble())
+                              .then((value) {
+                            isloading.value = false;
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.black,
+                                content: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    value
+                                        ? const Icon(
+                                            Icons.done,
+                                            color: Colors.green,
+                                          )
+                                        : const Icon(
+                                            Iconsax.warning_2,
+                                            color: Colors.red,
+                                          ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(value
+                                        ? "Added to cart"
+                                        : "Some error occured! "),
+                                    const Spacer(),
+                                    if (!value)
+                                      const Text(
+                                        "try again",
+                                        style: TextStyle(color: primaryColor),
+                                      )
+                                  ],
+                                )));
+                          });
+                        }
+                      },
+                      customWidget: isloading.value
+                          ? const CircularProgressIndicator(
+                              color: Colors.black,
+                              strokeWidth: 2,
+                            )
+                          : const Text(
+                              "Added to Cart",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Tooltip(
-                          message: "Add to cart",
-                          child: InkWell(
-                            onTap: () {
-                              if (!isloading.value) {
-                                isloading.value = true;
-                                ProductsAndStoreFunctions.addToCart(
-                                        productModel,
-                                        selectedQantity.value,
-                                        price.value.toDouble())
-                                    .then((value) {
-                                  isloading.value = false;
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                          behavior: SnackBarBehavior.floating,
-                                          backgroundColor: Colors.black,
-                                          content: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              value
-                                                  ? const Icon(
-                                                      Icons.done,
-                                                      color: Colors.green,
-                                                    )
-                                                  : const Icon(
-                                                      Iconsax.warning_2,
-                                                      color: Colors.red,
-                                                    ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(value
-                                                  ? "Added to cart"
-                                                  : "Some error occured! "),
-                                              const Spacer(),
-                                              if (!value)
-                                                const Text(
-                                                  "try again",
-                                                  style: TextStyle(
-                                                      color: primaryColor),
-                                                )
-                                            ],
-                                          )));
-                                });
-                              }
-                            },
-                            child: Container(
-                              height: 60,
-                              width: 60,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Center(
-                                child: isloading.value
-                                    ? const CircularProgressIndicator(
-                                        color: Colors.black,
-                                        strokeWidth: 2,
-                                      )
-                                    : const Icon(Iconsax.heart),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
                     ),
                     const SizedBox(
                       height: 40,

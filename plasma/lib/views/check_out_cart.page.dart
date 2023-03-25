@@ -201,7 +201,7 @@ class _CheckOutCartState extends State<CheckOutCart> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Expanded(
-                            child: _buttonShip("assets/icons/chop.png",
+                            child: _buttonShip("assets/icons/credit.png",
                                 isCardPayment.value, "Card", () {
                           isCardPayment.value = true;
                         })),
@@ -209,7 +209,7 @@ class _CheckOutCartState extends State<CheckOutCart> {
                           width: 10,
                         ),
                         Expanded(
-                          child: _buttonShip("assets/icons/fish.png",
+                          child: _buttonShip("assets/icons/cash.png",
                               !isCardPayment.value, "Cash", () {
                             isCardPayment.value = false;
                           }),

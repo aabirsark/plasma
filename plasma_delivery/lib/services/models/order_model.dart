@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:plasma/services/models/product_model.dart';
+import 'package:plasma_delivery/services/models/product_mode.dart';
 
 class OrderModel {
   final String? customer;
@@ -11,10 +11,12 @@ class OrderModel {
   final double? price;
   final ProductModel? model;
   final String? status;
+  String? id;
   final String? payment;
   final bool? isChopped;
 
   OrderModel({
+    this.payment,
     this.isChopped,
     this.customer,
     this.seller,
@@ -22,7 +24,6 @@ class OrderModel {
     this.address,
     this.code,
     this.quantity,
-    this.payment,
     this.price,
     this.model,
   });
@@ -48,9 +49,11 @@ class OrderModel {
       code: map['code'],
       status: map['status'] ?? "Ordered",
       quantity: map['quantity'],
-      price: map['price'],
       payment: map['payment'],
       isChopped: map['type'],
+      price: map['price'].runtimeType is double
+          ? int.parse(map['price'])
+          : map['price'],
       model:
           map['product'] != null ? ProductModel.fromMap(map['product']) : null,
     );

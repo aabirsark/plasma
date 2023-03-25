@@ -57,6 +57,7 @@ class OrderDBFnctions {
 
       return orders;
     } catch (e) {
+      print(e);
       return [];
     }
   }
