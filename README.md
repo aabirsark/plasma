@@ -30,8 +30,9 @@ Plasma is an online fish market which is made through Flutter. This project is m
 
 here are the apk download links of the app. Please don't abuse the platfrom !
 
-- [PLASMA user app](https://drive.google.com/file/d/1K24gD1lVMGg2XpK3041pB7T9ZHkHbE5d/view?usp=share_link)
-- [PLASMA BUSINESS app](https://drive.google.com/file/d/1wJYeZKLjWC_uhq5b_tbRAl8p_F3TKIRJ/view?usp=share_link)
+- [PLASMA user app](https://drive.google.com/file/d/19HbsIpqKIKX5zMwn5g_hko7yqEHb_w71/view?usp=share_link)
+- [PLASMA Business app](https://drive.google.com/file/d/1WJhAqRtDbRnSTNN_Zx-U02kHOd2uNLsF/view?usp=share_link)
+- [PLASMA Delivery app ](https://drive.google.com/file/d/1vX85YWWL4zQ7f-w0__Dxcw2U1Ui7WvmP/view?usp=share_link)
 
 
 
